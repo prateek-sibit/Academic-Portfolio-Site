@@ -1,0 +1,47 @@
+{% extends 'basic_app/base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+<header class="masthead" style="background-image: url({% static 'images/contact.jpg'%})">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Contact <i class="fas fa-envelope-square"></i></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="row">
+        <!-- Address Part -->
+        <div class="col-lg-4 info">
+          <i class="fas fa-map-marker-alt"></i>
+          <h2>Office Address</h2>
+          <p>~Insert office address into HTML~
+             Aenean ultricies erat id lacus malesuada, in ullamcorper mauris laoreet.</p>
+        </div>
+        <!-- Email Part -->
+        <div class="col-lg-4 info">
+          <i class="far fa-envelope"></i>
+          <h2>Email</h2>
+          <p>~Insert email into HTML~
+            Cras eu lectus sit amet mi mattis rhoncus</p>
+        </div>
+        <!-- Phone Part -->
+        <div class="col-lg-4 info">
+          <i class="fas fa-phone"></i>
+          <h2>Office Phone</h2>
+          <p>~Insert phone number into HTML~
+            Aenean sagittis nunc lectus, non posuere tortor lobortis semper. </p>
+        </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

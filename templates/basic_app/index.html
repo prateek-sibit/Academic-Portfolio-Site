@@ -1,0 +1,89 @@
+{% extends 'basic_app/base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<header class="bg-primary text-white">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-lg-4">
+        <!-- Insert image here  -->
+        <img class="img-thumbnail" src="{% static 'images/Profile.jpg'%}"  height="225" width="225" alt="profile photo">
+      </div>
+      <div class="col-lg-8">
+        <h1>Your Name</h1>
+        <p class="lead">PhD, U. of XYZ, Location, 2005
+                        Associate Professor
+                        Dept. of Computer Science
+                        University of XYZ
+                        Tel/Fax: +000-000000 / 01
+                        Email:  email@domain.com
+                        Lab: ~lab webiste~
+                        Directions: ~map directions~
+                        Expertise: Expertise area
+                        -----Example information here-----
+         </p>
+         <a href="/about"><button class="btn btn-default" type="button" name="button">Learn More >></button></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+
+        <!-- Recent Publications Section -->
+        <h1>Recent Publications <a href="/publications"><button class="btn btn-primary" type="button" name="button">All Publications >></button></a></h1>
+        <hr>
+        <ol>
+          {% for publication in publications|slice:":3" %}
+          <li><a href="{{publication.link}}">{{publication.title}}</a>, {{publication.description}} - <strong>({{publication.publish_year}})</strong></li><br>
+          {% endfor %}
+        </ol>
+
+        <!-- Recent Projects Section -->
+        <h1>Recent Projects <a href="/projects"><button class="btn btn-primary" type="button" name="button">All Projects >></button></a></h1>
+        <hr>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Project Name</th>
+              <th>Sponsored By</th>
+              <th>Principal Investigator/Co-PI</th>
+              <th>Project Duration</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for project in projects %}
+            <tr>
+              <td>{{project.name}}</td>
+              <td>{{project.sponsored}}</td>
+              <td>{{project.principal_investigator}}</td>
+              <td>{{project.start_year}} - {{project.end_year}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+
+        <!-- Active Courses section -->
+        <h1>Active Courses <a href="/courses"><button class="btn btn-primary" type="button" name="button">All Courses >></button></a></h1>
+        <hr>
+        <ul>
+          {% for course in courses %}
+          <li>
+            <p>
+              <button class="btn btn-success course" type="button" name="button">{{course.code}}  </button>
+              <span class="course-info">  {{course.name}}, {{course.start_year}}-{{course.end_year}}, {{course.type}} {{course.semester}}</span>
+            </p>
+          </li>
+          {% endfor %}
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

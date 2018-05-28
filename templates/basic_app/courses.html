@@ -1,0 +1,49 @@
+{% extends 'basic_app/base.html'%}
+{% load staticfiles %}
+{% block body_block %}
+  <!-- Displays the publications -->
+
+  <header class="masthead" style="background-image: url({% static 'images/course.jpg'%})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Courses <i class="fas fa-chalkboard-teacher"></i></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-11 mx-auto">
+          <hr>
+            <ul>
+              <!-- Run Loop to display course information -->
+              {% for course in courses%}
+                <!-- If course is active display as green button else blue -->
+                {% if course.active %}
+                <li>
+                  <p>
+                    <button class="btn btn-success course" type="button" name="button">{{course.code}}  </button>
+                    <span class="course-info">  {{course.name}}, {{course.start_year}}-{{course.end_year}}, {{course.type}} {{course.semester}}</span>
+                  </p>
+                </li>
+                {% else %}
+                <li>
+                  <p>
+                    <button class="btn btn-info course" type="button" name="button">{{course.code}}  </button>
+                    <span class="course-info">  {{course.name}}, {{course.start_year}}-{{course.end_year}}, {{course.type}} {{course.semester}}</span>
+                  </p>
+                </li>
+                {%endif%}
+              {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

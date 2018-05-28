@@ -1,0 +1,88 @@
+{% extends 'basic_app/base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+<header class="masthead" style="background-image: url({% static 'images/student.jpg'%})">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Students <i class="fas fa-user-graduate"></i></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="content" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h2>PhD</h2>
+                <hr> {% for student in students %}
+                <!-- List all PhD Students -->
+                {% if student.course.lower == 'phd'%}
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <img class="img-thumbnail" src="{{student.profile.url}}" height="250px" width="150px">
+                        </div>
+                        <div class="col-lg-6">
+                            <h2>{{student.name}}</h2>
+                            <div>
+                                <h5><em>{{student.research_area}}</em></h5>
+                                <p>{{student.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                <br>
+                {% endif %}
+                {% endfor %}
+
+                <h2>M.Tech</h2>
+                <hr> {% for student in students %}
+                <!-- List all M.Tech Students -->
+                {% if student.course.lower == 'm.tech'%}
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <img class="img-thumbnail" src="{{student.profile.url}}" height="200px" width="150px">
+                        </div>
+                        <div class="col-lg-6">
+                            <h2>{{student.name}}</h2>
+                            <div>
+                                <h5><em>{{student.research_area}}</em></h5>
+                                <p>{{student.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                {% endif %}
+                {% endfor %}
+
+                <h2>M.Sc</h2>
+                <hr>
+                {% for student in students %}
+                <!-- List all M.Sc Students -->
+                {% if student.course.lower == 'm.sc'%}
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img class="img-thumbnail" src="{{student.profile.url}}" height="200px" width="150px">
+                    </div>
+                    <div class="col-lg-6">
+                        <h2>{{student.name}}</h2>
+                        <div>
+                            <h5><em>{{student.research_area}}</em></h5>
+                            <p>{{student.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

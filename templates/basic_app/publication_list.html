@@ -1,0 +1,39 @@
+{% extends 'basic_app/base.html'%}
+{% load staticfiles %}
+{% block body_block %}
+  <!-- Displays the publications -->
+  <header class="masthead" style="background-image: url({% static 'images/publication.jpg'%})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Publications <i class="far fa-newspaper"></i></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <hr>
+          <!-- Create loop to make buttons based on different publish_year -->
+          <button id="disp_all" class="btn btn-success btn-sm" type="button" name="button">All </button>
+          {% for year in unique_publish %}
+          <button class="btn btn-primary btn-sm {{year}}" type="button" name="button">{{year}} </button>
+          {% endfor %}
+          <hr>
+          <br>
+          <ol>
+            {% for publication in publications %}
+            <li class={{publication.publish_year}}><a href="{{publication.link}}">{{publication.title}}</a>, {{publication.description}} - <strong>({{publication.publish_year}})</strong></li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
